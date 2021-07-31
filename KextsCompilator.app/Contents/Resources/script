@@ -1,0 +1,153 @@
+#!/bin/bash
+
+#set -x
+
+echo "<-- Olarila.com - The Real Vanilla Hackintosh -->"
+echo "            "
+echo "##### !!! DOWNLOADING FILES !!! #####"
+mkdir /$HOME/Desktop/Lilu4All
+cd /$HOME/Desktop/Lilu4All
+git clone https://github.com/acidanthera/MacKernelSDK
+git clone https://github.com/acidanthera/Lilu
+git clone https://github.com/acidanthera/AppleALC
+git clone https://github.com/lvs1974/CpuTscSync
+git clone https://github.com/acidanthera/WhateverGreen
+git clone https://github.com/acidanthera/HibernationFixup
+git clone https://github.com/acidanthera/CPUFriend
+git clone https://github.com/acidanthera/RTCMemoryFixup
+git clone https://github.com/acidanthera/BT4LEContinuityFixup
+git clone https://github.com/acidanthera/DebugEnhancer
+git clone https://github.com/acidanthera/NVMeFix
+git clone https://github.com/acidanthera/VoodooInput
+git clone https://github.com/acidanthera/IntelMausi
+git clone https://github.com/acidanthera/VirtualSMC
+git clone https://github.com/acidanthera/AirportBrcmFixup
+git clone https://github.com/hieplpvip/SidecarEnabler
+git clone https://github.com/hieplpvip/AppleBacklightSmoother
+git clone https://github.com/Mieze/RTL8111_driver_for_OS_X
+git clone https://github.com/Mieze/AtherosE2200Ethernet
+git clone https://github.com/Mieze/RealtekRTL8100
+
+echo "            "
+echo "##### !!! COPY LILU TO FOLDERS !!! #####"
+echo "            "
+cd /$HOME/Desktop/Lilu4All
+cp -r ./MacKernelSDK ./Lilu
+xcodebuild -project ./Lilu/Lilu.xcodeproj -configuration Debug clean build ARCHS=x86_64 ONLY_ACTIVE_ARCH=YES CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+cd /$HOME/Desktop/Lilu4All
+cp -r ./Release/Lilu.kext ./AppleALC
+cp -r ./Release/Lilu.kext ./CpuTscSync
+cp -r ./Release/Lilu.kext ./WhateverGreen
+cp -r ./Release/Lilu.kext ./HibernationFixup
+cp -r ./Release/Lilu.kext ./CPUFriend
+cp -r ./Release/Lilu.kext ./RTCMemoryFixup
+cp -r ./Release/Lilu.kext ./BT4LEContinuityFixup
+cp -r ./Release/Lilu.kext ./DebugEnhancer
+cp -r ./Release/Lilu.kext ./NVMeFix
+cp -r ./Release/Lilu.kext ./VoodooInput
+cp -r ./Release/Lilu.kext ./IntelMausi
+cp -r ./Release/Lilu.kext ./VirtualSMC
+cp -r ./Release/Lilu.kext ./AirportBrcmFixup
+cp -r ./Release/Lilu.kext ./SidecarEnabler
+cp -r ./Release/Lilu.kext ./AppleBacklightSmoother
+
+echo "            "
+echo "##### !!! COPY MacKernelSDK TO FOLDERS !!! #####"
+cd /$HOME/Desktop/Lilu4All
+cp -r ./MacKernelSDK ./AppleALC
+cp -r ./MacKernelSDK ./CpuTscSync
+cp -r ./MacKernelSDK ./WhateverGreen
+cp -r ./MacKernelSDK ./HibernationFixup
+cp -r ./MacKernelSDK ./CPUFriend
+cp -r ./MacKernelSDK ./RTCMemoryFixup
+cp -r ./MacKernelSDK ./BT4LEContinuityFixup
+cp -r ./MacKernelSDK ./DebugEnhancer
+cp -r ./MacKernelSDK ./NVMeFix
+cp -r ./MacKernelSDK ./VoodooInput
+cp -r ./MacKernelSDK ./IntelMausi
+cp -r ./MacKernelSDK ./VirtualSMC
+cp -r ./MacKernelSDK ./AirportBrcmFixup
+cp -r ./MacKernelSDK ./SidecarEnabler
+cp -r ./MacKernelSDK ./AppleBacklightSmoother
+
+echo "##### !!! START BUILD FILES !!! #####"
+echo "            "
+cd /$HOME/Desktop/Lilu4All/AppleALC/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/CpuTscSync/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/WhateverGreen/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/HibernationFixup/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/CPUFriend/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/RTCMemoryFixup/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/BT4LEContinuityFixup/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/DebugEnhancer/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/NVMeFix/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/VoodooInput/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/IntelMausi/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/VirtualSMC/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/AirportBrcmFixup/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/RTL8111_driver_for_OS_X/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/AtherosE2200Ethernet/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/RealtekRTL8100/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/SidecarEnabler/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd /$HOME/Desktop/Lilu4All/AppleBacklightSmoother/
+xcodebuild CONFIGURATION_BUILD_DIR=/$HOME/Desktop/Lilu4All/Release
+
+cd ~/Desktop/Lilu4All/Release
+rm -rf *.zip
+rm -rf *.dSYM
+rm -rf *dSYM
+rm -rf *.dsl
+rm -rf DeviceGenerator
+rm -rf ResourceConverter
+rm -rf rtcread
+rm -rf smc
+rm -rf smcread
+rm -rf package
+rm -rf libaistat.dylib
+
+mv ~/Desktop/Lilu4All/Release ~/Desktop/
+cd ~/Desktop
+rm -rf Lilu4All
+
+open -a /Applications/Safari.app "https://www.olarila.com/topic/6129-useful-links/"
+echo "            "
+echo "<---DONE--->"
+echo "            "
+echo "Olarila.com - The Real Vanilla Hackintosh"
+
+echo "            "
+echo "Kexts Credits: acidanthera Team, Mieze, lvs1974, hieplpvip"

@@ -1,0 +1,23 @@
+#!/bin/bash
+# set -x
+
+echo "||||||||||||||||||||||||"
+echo "*----------------------*"
+echo "  Welcome `users`       "
+echo "*----------------------*"
+echo "         "
+echo "||||||||||||||||||||||||"
+echo "****************************************************************************************************"
+echo "Small donations via PayPal for build, patches and guides development would be extremely appreciated."
+echo "****************************************************************************************************"
+echo "         "
+
+efiloc=$(osascript -e "do shell script \"$efiScript $*\" with administrator privileges")
+
+cd /Library/Preferences/
+
+rm -R com.apple.PowerManagement*
+
+echo "DONE / ENJOY"
+
+osascript -e 'tell app "loginwindow" to «event aevtrrst»'

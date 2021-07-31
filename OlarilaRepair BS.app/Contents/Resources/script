@@ -1,0 +1,66 @@
+#!/bin/bash
+
+#set -x
+
+echo "<-- Olarila.com - The Real Vanilla Hackintosh -->"
+
+efiloc=$(osascript -e "do shell script \"$efiScript $*\" with administrator privileges")
+
+echo "     "
+echo "-Mount as RW"
+echo "     "
+mount -uw /
+echo "-Kill All Finder"
+echo "     "
+killall Finder
+echo "-Master Disable"
+echo "     "
+spctl --master-disable
+echo "-Repair"
+echo "     "
+sudo ./InsanelyRepairPermission -rt /Volumes/
+echo "-Nvram"
+echo "     "
+nvram -c /Volumes/
+echo "-Purge"
+echo "     "
+purge /Volumes/
+echo "-Auto Power Off"
+echo "     "
+pmset -a autopoweroff 0
+echo "-Standby"
+echo "     "
+pmset -a standby 0
+echo "-Hibernate Mode"
+echo "     "
+pmset -a hibernatemode 0
+echo "-Disk Sleep"
+echo "     "
+pmset -a disksleep 0
+echo "-TCP Keep Alive"
+echo "     "
+pmset -b tcpkeepalive 0 
+echo "     "
+echo "-Proximity Wake"
+echo "     "
+pmset -a proximitywake 0
+echo "-Sleep Image"
+echo "     "
+rm -f /private/var/vm/sleepimage
+echo "-Touch Sleep Image"
+echo "     "
+touch /private/var/vm/sleepimage
+echo "-Chflags Sleep Image"
+echo "     "
+chflags uchg /private/var/vm/sleepimage
+echo "-Kernel/Kext Cache"
+echo "     "
+chown -R root:wheel /System/Library/Extensions/
+chmod -R 755 /System/Library/Extensions/
+kmutil install --update-all
+kcditto
+update_dyld_shared_cache -force
+
+echo "DONE / ENJOY"
+
+osascript -e 'tell app "loginwindow" to «event aevtrrst»'
